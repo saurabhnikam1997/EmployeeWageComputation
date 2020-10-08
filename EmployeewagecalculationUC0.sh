@@ -4,6 +4,8 @@ echo "WELCOME To Employee Wage Calculation"
 
 
 isPresent=1
+wagePerHour=20
+hrsPerDay=8
 
 function attendence()
 {
@@ -15,4 +17,30 @@ function attendence()
 		echo "Employee is Absent"
 	fi
 }
-attendence  
+attendence
+
+
+function dailywage()
+{
+	if [[ $((RANDOM%2)) -eq $isPresent ]]
+	then
+		dailySalary=$(($wagePerHour * $hrsPerDay ))
+		echo "Salary is.."$dailySalary
+	else
+		echo "Salary = 0"
+	fi
+}
+dailywage
+
+
+
+
+
+
+
+
+
+
+
+
+
