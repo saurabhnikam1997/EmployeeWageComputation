@@ -20,15 +20,15 @@ noOfDays=0
 
 function attendence()
 {
-	random=$((RANDOM % 2 ))
-	if [[ $random -eq $isPresent ]]
+
+	if [[ $((RANDOM%2)) -eq $isPresent ]]
 	then
 		echo "Employee is Present"
 	else
 		echo "Employee is Absent"
 	fi
 }
-attendence
+#attendence
 
 
 function dailywage()
@@ -41,7 +41,7 @@ function dailywage()
 		echo "Salary = 0"
 	fi
 }
-dailywage
+#dailywage
 
 function checkPartTime()
 {
@@ -59,7 +59,7 @@ function checkPartTime()
 	dailySalary=$(($empHrs * $wagePerHr))
 	echo "Salary is.."$dailySalary
 }
-checkPartTime
+#checkPartTime
 
 
 function usingCase()
@@ -79,7 +79,7 @@ function usingCase()
 			;;
 	esac
 }
-usingCase
+#usingCase
 
 
 function wageForMonth()
@@ -104,9 +104,9 @@ function wageForMonth()
 	done
 echo "Total Wage of Month.."$totalSalary
 }
-wageForMonth
+#wageForMonth
 
-function tillMaxHrs()
+function findHrs()
 {
 	while [[ totalWorkHrs -lt 100 && noOfDays -lt $noOfWorkingDays  ]]
 	do
@@ -123,10 +123,20 @@ function tillMaxHrs()
          ;;
        esac
 	((noOfDays++))
-	totalWorkHrs=$(($totalWorkHrs+$empHrs))
-      salary=$(($wagePerHr*$empHrs))
-      totalSalary=$(($totalSalary + $salary ))
-   done
-echo "Total Wage of Month.."$totalSalary
+	echo "Working Hours On Day $noOfDays.."
+	getWorkingHrs $empHrs
+     done
+
+#echo "Total Wage of Month.."$totalSalary
 }
-tillMaxHrs
+
+#uc7
+function getWorkingHrs()
+{
+	local empHours
+	empHours=$1
+	totalWorkHrs=$(($totalWorkHrs + $empHours))
+	echo  $totalWorkHrs
+}
+findHrs
+
