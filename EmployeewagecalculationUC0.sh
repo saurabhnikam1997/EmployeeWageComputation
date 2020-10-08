@@ -116,6 +116,7 @@ function wageForMonth() # Use Case 5 Refactored
    done
 totalSalary=$(($totalWorkHrs * $wagePerHr))
 echo "Daily Wage.."${dailyWage[@]}
+echo "Day numbers.."{!dailyWages[@]}
 echo "Total Wage of Month.."$totalSalary
 }
 wageForMonth
