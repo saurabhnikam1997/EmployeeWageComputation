@@ -5,12 +5,16 @@ echo "WELCOME To Employee Wage Calculation"
 
 isPresent=1
 wagePerHr=20
+hrsPerDay=8
+
 partTimeHrs=4
 fullTimeHrs=8
-hrsPerDay=8
+
 isPartTime=1
 isFullTime=2
 empHrs=0
+
+noOfWorkingDays=20
 
 
 function attendence()
@@ -77,7 +81,27 @@ function usingCase()
 usingCase
 
 
-
-
-
+function wageForMonth()
+{
+	for (( i=1; i<=$noOfWorkingDays; i++ ))
+	do
+		random=$((RANDOM%3))
+		case $random in
+			1)
+			empHrs=4
+			;;
+			2)
+			empHrs=8
+			;;
+			*)
+			empHrs=0
+			;;
+			esac
+		salary=$(($wagePerHr*$empHrs))
+		echo $salary
+		totalSalary=$(($totalSalary + $salary ))
+	done
+echo "Total Wage of Month.."$totalSalary
+}
+wageForMonth
 
